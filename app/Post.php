@@ -13,7 +13,7 @@ class Post extends Model
      */
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->select(['id', 'name', 'email']);
     }
 
 
@@ -24,6 +24,14 @@ class Post extends Model
      */
     public function Categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->select(['name', 'slug']);
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        if ($this->relationLoaded('categories')) {
+            return $this->relations['categories']->pluck('name');
+        }
+        return null;
     }
 }
