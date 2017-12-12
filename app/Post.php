@@ -11,7 +11,19 @@ class Post extends Model
      * @author Shyam Makwana
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function User() {
+    public function User()
+    {
         return $this->belongsTo(User::class);
+    }
+
+
+    /**
+     * Post has many categories
+     * @author Shyam Makwana
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function Categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }
