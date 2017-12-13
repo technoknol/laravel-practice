@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ $post->title }}</div>
+                    <div class="panel-heading">{{ __('posts.edit'). ": " . $post->title }}</div>
 
                     <div class="panel-body">
                         {!! Form::open(['route'=> ['posts.update',$post ], 'method'=> 'PUT']) !!}

@@ -6,7 +6,17 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ $post->title }}</div>
+                    <div class="panel-heading">
+                        {{--<span class="Xpull-left">--}}
+                        {{ $post->title }}
+                        {{--</span>--}}
+                        {{--<span class="Xpull-right">--}}
+                        <a href="{{ route('posts.edit', ['id'=> $post->id]) }}" class="btn btn-primary btn-small">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        {{--</span>--}}
+                        {{--<div class="clearfix"></div>--}}
+                    </div>
 
                     <div class="panel-body">
                         {{--<form class="hide_fields_and_readonly">--}}
@@ -31,43 +41,23 @@
                             </div>
                             {{--<div>--}}
 
-                            {{--<button type="button" class="btn btn-primary submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Update</button>--}}
-                            {{--</div>--}}
-
                         </div>
-                        {{--</form>--}}
-                        {{--<table class="table">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-                        {{--<td>Id</td>--}}
-                        {{--<td>User</td>--}}
-                        {{--<td>Title</td>--}}
-                        {{--<td>Body</td>--}}
-                        {{--<td>Categories</td>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--<tbody>--}}
-
-                        {{--@if($post)--}}
-
-                        {{--<tr>--}}
-                        {{--<td>{{ $post->id }}</td>--}}
-                        {{--<td>{{ $post->user->name }}</td>--}}
-                        {{--<td>{{ $post->title }}</td>--}}
-                        {{--<td>{{ str_limit($post->body, 80) }}</td>--}}
-                        {{--<td>{{ implode(',',$post->category_name->toArray()) }}</td>--}}
-                        {{--</tr>--}}
-                        {{--@else--}}
-                        {{--<tr class="text-danger">--}}
-                        {{--<td colspan="5">{{ _("No post Found") }}</td>--}}
-                        {{--</tr>--}}
-
-                        {{--@endif--}}
-                        {{--</tbody>--}}
-                        {{--</table>--}}
                     </div>
                 </div>
             </div>
         </div>
+        {{--        {!!  var_dump($post->comments) !!}--}}
+        <h2>Comments:</h2>
+        {{--@include('comment.show')--}}
+        @if (count($comments) > 0)
+            <ul>
+                @foreach ($comments as $comment)
+                    @include('comment.show', $comment)
+                @endforeach
+            </ul>
+        @else
+            @include('comment.none')
+        @endif
+        {{--        @each('comment.show', $comments, 'comment')--}}
     </div>
 @endsection

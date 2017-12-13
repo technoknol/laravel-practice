@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
+use function compact;
 
 /**
  * Class PostController
@@ -59,8 +60,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with('user', 'categories')->find($id);
-        return view('post.show', compact('post'));
+        $post = Post::with('user', 'categories', 'comments', 'comments.user', 'comments.childs')->find($id);
+        $comments = $post->comments;
+//        echo '<pre>';   print_r($comments->toArray()); die();
+        return view('post.show', compact('post', 'comments'));
     }
 
     /**

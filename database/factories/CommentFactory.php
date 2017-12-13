@@ -11,6 +11,6 @@ $factory->define(Comment::class, function (Faker $faker) {
         'user_id' => User::inRandomOrder()->pluck('id')->first(),
         'post_id' => Post::inRandomOrder()->pluck('id')->first(),
         'body' => $faker->realText(),
-        'parent' => $comment ?: 0
+        'parent_id' => $comment ?: 0
     ];
 });

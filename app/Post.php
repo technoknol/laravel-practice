@@ -39,6 +39,18 @@ class Post extends Model
     }
 
     /**
+     * Post has many Comments
+     * @author Shyam Makwana
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class)
+            ->select(['id', 'body', 'user_id', 'post_id', 'parent_id', 'updated_at'])
+            ->where('parent_id', '=', 0);
+    }
+
+    /**
      * @return null
      */
     public function getCategoryNameAttribute()
