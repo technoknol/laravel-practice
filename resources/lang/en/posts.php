@@ -24,5 +24,6 @@ return [
     'title' => 'Title',
     'body' => 'Body',
     'categories' => 'Categories',
+    'edit' => 'Edit',
 
 ];

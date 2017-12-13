@@ -4,8 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Post
+ * @package App
+ */
 class Post extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'body'];
+
     /**
      * User model related to Post model
      * @author Shyam Makwana
@@ -27,6 +38,9 @@ class Post extends Model
         return $this->belongsToMany(Category::class)->select(['name', 'slug']);
     }
 
+    /**
+     * @return null
+     */
     public function getCategoryNameAttribute()
     {
         if ($this->relationLoaded('categories')) {

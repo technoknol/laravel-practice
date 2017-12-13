@@ -17,6 +17,7 @@
                                 <td>{{ __('posts.title') }}</td>
                                 <td>{{ __('posts.body') }}</td>
                                 <td>{{ __('posts.categories') }}</td>
+                                <td>{{ __('posts.edit') }}</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,6 +29,11 @@
                                     <td><a href="{{url("/posts/{$post->id}") }}">{{ $post->title }}</a></td>
                                     <td>{{ str_limit($post->body, 80) }}</td>
                                     <td>{{ implode(',',$post->category_name->toArray()) }}</td>
+                                    <td>
+                                        <a href="{{ route('posts.edit', ['id'=> $post->id]) }}" class="btn btn-primary">
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

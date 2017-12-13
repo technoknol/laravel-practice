@@ -1,33 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Category;
-use App\Http\Requests\UpdatePostRequest;
+use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 
 /**
  * Class PostController
- * @package App\Http\Controllers
+ * @package App\Http\Controllers\Api
  */
 class PostController extends Controller
 {
-    public function __construct()
-    {
-//        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Post[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
         $posts = Post::with('user', 'categories')->get();
-        return view('post.index', compact('posts' ));
-
+        return $posts;
     }
 
     /**
@@ -43,7 +37,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,49 +48,31 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return Post|Post[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
     public function show($id)
     {
         $post = Post::with('user', 'categories')->find($id);
-        return view('post.show', compact('post'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $post = Post::with('user', 'categories')->find($id);
-        $categories = Category::all();
-        return view('post.edit', compact('post', 'categories'));
+        return $post;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Post $post
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $post = Post::findorfail($id);
-        $post->update($input);
-        return redirect('posts');
-//        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

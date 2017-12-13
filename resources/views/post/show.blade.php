@@ -12,22 +12,21 @@
                         {{--<form class="hide_fields_and_readonly">--}}
                         <div class="col-md-12 col-md-offset-3X">
                             <div>
-                                <label for="exampleInputUsername">{{ __('posts.id') }}</label>
+                                <label for="id">{{ __('posts.id') }}</label>
                                 <p>{{ $post->id }}</p>
                             </div>
                             <div>
-                                <label for="exampleInputEmail">{{ __('posts.title') }}</label>
+                                <label for="title">{{ __('posts.title') }}</label>
                                 <p>{{ $post->title }}</p>
                             </div>
                             <div>
-                                <label for="telephone">{{ __('posts.body') }}</label>
+                                <label for="body">{{ __('posts.body') }}</label>
                                 <p>{{ $post->body }}</p>
                             </div>
                             {{--</div>--}}
                             {{--<div class="col-md-6">--}}
                             <div>
-                                <label for="description"> {{ __('posts.categories') }}</label>
-                                {{--<input type="tel" class="form-control" id="telephone" placeholder="Categories" value="{{ implode(',',$post->category_name->toArray()) }}">--}}
+                                <label for="categories"> {{ __('posts.categories') }}</label>
                                 <p>{{ implode(',',$post->category_name->toArray()) }}</p>
                             </div>
                             {{--<div>--}}

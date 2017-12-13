@@ -1,5 +1,9 @@
 <?php
 
+use Collective\Html\FormFacade;
+use Collective\Html\HtmlFacade;
+use Collective\Html\HtmlServiceProvider;
+
 return [
 
     /*
@@ -168,6 +172,7 @@ return [
          * Package Service Providers...
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
+        HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Html' => HtmlFacade::class,
+        'Form' => FormFacade::class
     ],
 
 ];
