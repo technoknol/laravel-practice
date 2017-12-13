@@ -3,19 +3,20 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <example-component></example-component>
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Posts</div>
+                    <div class="panel-heading">{{ __('posts.posts') }}</div>
 
                     <div class="panel-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <td>Id</td>
-                                <td>User</td>
-                                <td>Title</td>
-                                <td>Body</td>
-                                <td>Categories</td>
+                                <td>{{ __('posts.id') }}</td>
+                                <td>{{ __('users.user') }}</td>
+                                <td>{{ __('posts.title') }}</td>
+                                <td>{{ __('posts.body') }}</td>
+                                <td>{{ __('posts.categories') }}</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -24,7 +25,7 @@
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->user->name }}</td>
-                                    <td>{{ $post->title }}</td>
+                                    <td><a href="{{url("/posts/{$post->id}") }}">{{ $post->title }}</a></td>
                                     <td>{{ str_limit($post->body, 80) }}</td>
                                     <td>{{ implode(',',$post->category_name->toArray()) }}</td>
                                 </tr>
