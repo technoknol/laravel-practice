@@ -1,6 +1,6 @@
 {{--<div class="container">--}}
 {{--@if(count($comments)> 0 )--}}
-<comment-show inline-template>
+<comment-show inline-template comment="{{ $comment }}">
     <div class="row comment">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
@@ -29,6 +29,7 @@
                         @if(count($comment->childs)>0)
                             @foreach($comment->childs as $comment)
                                 @include('comment.show', ['comment'=> $comment])
+                                {{--<comment-show comment="{{ $comment }}"></comment-show>--}}
                             @endforeach
                         @endif
                     </div>

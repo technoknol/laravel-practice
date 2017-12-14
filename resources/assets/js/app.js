@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.Axios = require('axios'); //alternative: import axios from 'axios';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,21 +21,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('comment-show', require('./components/comments/CommentShow.vue'));
 
 const app = new Vue({
-    el: '#app',
-    // data() {
-    //     return {
-    //         showCommentReplyForm: false,
-    //         replyTo: null
-    //     }
-    // },
-    // methods: {
-    //     CommentReplyActionButton(comment) {
-    //         console.log('CommentReplyActionButton', comment, typeof comment)
-    //         this.showCommentReplyForm = true;
-    //         this.replyTo = comment.id;
-    //     },
-    //     // clickedExampleFun() {
-    //     //     alert('clickedExampleFun()')
-    //     // }
-    // }
+    el: '#app'
 });

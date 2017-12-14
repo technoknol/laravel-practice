@@ -1,10 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Comment;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 
+/**
+ * Class CommentController
+ * @package App\Http\Controllers\Api
+ */
 class CommentController extends Controller
 {
     /**
@@ -12,30 +18,29 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($post)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Comment::where('post_id', $post)->with('childs')->get();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CommentRequest $request
+     * @param $id
+     * @param $post_id
      * @return \Illuminate\Http\Response
      */
     public function store(CommentRequest $request)
     {
-        //
+        $comment = (new Comment)->fill([
+            'body' => $request->input('body'),
+            'user_id' => auth()->id(),
+            'post_id' => $request->input('post_id'),
+            'parent_id' => $request->input('parent_id'),
+        ]);
+        $comment->save();
+        return Comment::with('user')->find($comment->id);
     }
 
     /**
@@ -69,7 +74,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**
