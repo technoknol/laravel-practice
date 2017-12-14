@@ -16,7 +16,23 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('comment-action-buttons', require('./components/comments/CommentActionButtons.vue'));
+Vue.component('comment-reply-form', require('./components/comments/CommentReplyForm.vue'));
+Vue.component('comment-show', require('./components/comments/CommentShow.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data() {
+        return {
+            showCommentReplyForm: false,
+            replyTo: null
+        }
+    },
+    methods: {
+        CommentReplyActionButton(comment) {
+            console.log('CommentReplyActionButton', comment, typeof comment)
+            this.showCommentReplyForm = true;
+            this.replyTo = comment.id;
+        }
+    }
 });

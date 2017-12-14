@@ -50,11 +50,11 @@
         <h2>Comments:</h2>
         {{--@include('comment.show')--}}
         @if (count($comments) > 0)
-            <ul>
+            <div>
                 @foreach ($comments as $comment)
                     @include('comment.show', $comment)
                 @endforeach
-            </ul>
+            </div>
         @else
             @include('comment.none')
         @endif

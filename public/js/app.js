@@ -1034,6 +1034,11 @@
     /* 10 */
     /***/ (function (module, exports, __webpack_require__) {
 
+        var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+            return typeof obj;
+        } : function (obj) {
+            return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+        };
 
         /**
          * First we will load all of this project's JavaScript dependencies which
@@ -1052,9 +1057,26 @@
          */
 
         Vue.component('example-component', __webpack_require__(38));
+        Vue.component('comment-action-buttons', __webpack_require__(52));
+        Vue.component('comment-reply-form', __webpack_require__(55));
+        Vue.component('comment-show', __webpack_require__(58));
 
         var app = new Vue({
-            el: '#app'
+            el: '#app',
+            data: function data() {
+                return {
+                    showCommentReplyForm: false,
+                    replyTo: null
+                };
+            },
+
+            methods: {
+                CommentReplyActionButton: function CommentReplyActionButton(comment) {
+                    console.log('CommentReplyActionButton', comment, typeof comment === 'undefined' ? 'undefined' : _typeof(comment));
+                    this.showCommentReplyForm = true;
+                    this.replyTo = comment.id;
+                }
+            }
         });
 
         /***/
@@ -43233,6 +43255,446 @@
     /***/ (function (module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+        /***/
+    }),
+    /* 43 */,
+    /* 44 */,
+    /* 45 */,
+    /* 46 */,
+    /* 47 */,
+    /* 48 */,
+    /* 49 */,
+    /* 50 */,
+    /* 51 */,
+    /* 52 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var disposed = false
+        var normalizeComponent = __webpack_require__(39)
+        /* script */
+        var __vue_script__ = __webpack_require__(53)
+        /* template */
+        var __vue_template__ = __webpack_require__(54)
+        /* template functional */
+        var __vue_template_functional__ = false
+        /* styles */
+        var __vue_styles__ = null
+        /* scopeId */
+        var __vue_scopeId__ = null
+        /* moduleIdentifier (server only) */
+        var __vue_module_identifier__ = null
+        var Component = normalizeComponent(
+            __vue_script__,
+            __vue_template__,
+            __vue_template_functional__,
+            __vue_styles__,
+            __vue_scopeId__,
+            __vue_module_identifier__
+        )
+        Component.options.__file = "resources/assets/js/components/comments/CommentActionButtons.vue"
+        if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
+                return key !== "default" && key.substr(0, 2) !== "__"
+            })) {
+            console.error("named exports are not supported in *.vue files.")
+        }
+
+        /* hot reload */
+        if (false) {
+            (function () {
+                var hotAPI = require("vue-hot-reload-api")
+                hotAPI.install(require("vue"), false)
+                if (!hotAPI.compatible) return
+                module.hot.accept()
+                if (!module.hot.data) {
+                    hotAPI.createRecord("data-v-2b31b7a0", Component.options)
+                } else {
+                    hotAPI.reload("data-v-2b31b7a0", Component.options)
+                    ' + '
+                }
+                module.hot.dispose(function (data) {
+                    disposed = true
+                })
+            })()
+        }
+
+        module.exports = Component.exports
+
+
+        /***/
+    }),
+    /* 53 */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        Object.defineProperty(__webpack_exports__, "__esModule", {value: true});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            name: 'CommentActionButtons',
+            props: ['comment'],
+            data: function data() {
+                return {
+                    // this.comment = comment
+                };
+            },
+
+            computed: {
+                commentParsed: function commentParsed() {
+                    return JSON.parse(this.comment);
+                }
+            },
+            methods: {
+                // onclickedit() {
+                //     this.$emit('onedit', this.comment)
+                //   }
+            },
+            mounted: function mounted() {
+                // console.log('Component mounted.', this.comment, this.commentParsed);
+            }
+        });
+
+        /***/
+    }),
+    /* 54 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _c("div", [
+                _c("span", {staticClass: "reply-comment-btn pull-right"}, [
+                    _c(
+                        "button",
+                        {
+                            staticClass: "btn btn-sm btn-info",
+                            on: {
+                                click: function ($event) {
+                                    _vm.$emit("onedit", _vm.commentParsed.id)
+                                }
+                            }
+                        },
+                        [_vm._v("\n            Edit\n        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                        "button",
+                        {
+                            staticClass: "btn btn-sm btn-info",
+                            on: {
+                                click: function ($event) {
+                                    _vm.$emit("onreply", _vm.commentParsed.id)
+                                }
+                            }
+                        },
+                        [_vm._v("\n            Reply\n        ")]
+                    )
+                ])
+            ])
+        }
+        var staticRenderFns = []
+        render._withStripped = true
+        module.exports = {render: render, staticRenderFns: staticRenderFns}
+        if (false) {
+            module.hot.accept()
+            if (module.hot.data) {
+                require("vue-hot-reload-api").rerender("data-v-2b31b7a0", module.exports)
+            }
+        }
+
+        /***/
+    }),
+    /* 55 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var disposed = false
+        var normalizeComponent = __webpack_require__(39)
+        /* script */
+        var __vue_script__ = __webpack_require__(56)
+        /* template */
+        var __vue_template__ = __webpack_require__(57)
+        /* template functional */
+        var __vue_template_functional__ = false
+        /* styles */
+        var __vue_styles__ = null
+        /* scopeId */
+        var __vue_scopeId__ = null
+        /* moduleIdentifier (server only) */
+        var __vue_module_identifier__ = null
+        var Component = normalizeComponent(
+            __vue_script__,
+            __vue_template__,
+            __vue_template_functional__,
+            __vue_styles__,
+            __vue_scopeId__,
+            __vue_module_identifier__
+        )
+        Component.options.__file = "resources/assets/js/components/comments/CommentReplyForm.vue"
+        if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
+                return key !== "default" && key.substr(0, 2) !== "__"
+            })) {
+            console.error("named exports are not supported in *.vue files.")
+        }
+
+        /* hot reload */
+        if (false) {
+            (function () {
+                var hotAPI = require("vue-hot-reload-api")
+                hotAPI.install(require("vue"), false)
+                if (!hotAPI.compatible) return
+                module.hot.accept()
+                if (!module.hot.data) {
+                    hotAPI.createRecord("data-v-2a2839fa", Component.options)
+                } else {
+                    hotAPI.reload("data-v-2a2839fa", Component.options)
+                    ' + '
+                }
+                module.hot.dispose(function (data) {
+                    disposed = true
+                })
+            })()
+        }
+
+        module.exports = Component.exports
+
+
+        /***/
+    }),
+    /* 56 */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        Object.defineProperty(__webpack_exports__, "__esModule", {value: true});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            name: 'CommentReplyForm',
+            props: ['replyTo'],
+            // data() {
+            //     return {
+            //         // this.comment = comment
+            //     }
+            // },
+            computed: {
+                // commentParsed(){
+                //     return JSON.parse(this.comment);
+                // }
+            },
+            methods: {
+                // onclickedit() {
+                //     this.$emit('onedit', this.comment)
+                //   }
+            },
+            mounted: function mounted() {
+                console.log('Component reply to comment mounted..', this);
+                // this.parent_id = this.replyTo
+            }
+        });
+
+        /***/
+    }),
+    /* 57 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _vm._m(0, false, false)
+        }
+        var staticRenderFns = [
+            function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("div", [
+                    _c("form", {attrs: {action: ""}}, [
+                        _c("input", {attrs: {type: "hidden", name: "id"}}),
+                        _vm._v(" "),
+                        _c("input", {attrs: {type: "hidden", name: "parent_id"}}),
+                        _vm._v(" "),
+                        _c("div", {staticClass: "form-group"}, [
+                            _c("textarea", {
+                                staticClass: "form-control",
+                                attrs: {name: "", id: "", rows: "5"}
+                            })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                            _c(
+                                "button",
+                                {
+                                    staticClass: "btn btn-primary submit",
+                                    attrs: {type: "submit"}
+                                },
+                                [
+                                    _c("i", {
+                                        staticClass: "fa fa-paper-plane",
+                                        attrs: {"aria-hidden": "true"}
+                                    }),
+                                    _vm._v("Submit\n            ")
+                                ]
+                            )
+                        ])
+                    ])
+                ])
+            }
+        ]
+        render._withStripped = true
+        module.exports = {render: render, staticRenderFns: staticRenderFns}
+        if (false) {
+            module.hot.accept()
+            if (module.hot.data) {
+                require("vue-hot-reload-api").rerender("data-v-2a2839fa", module.exports)
+            }
+        }
+
+        /***/
+    }),
+    /* 58 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var disposed = false
+        var normalizeComponent = __webpack_require__(39)
+        /* script */
+        var __vue_script__ = __webpack_require__(59)
+        /* template */
+        var __vue_template__ = __webpack_require__(60)
+        /* template functional */
+        var __vue_template_functional__ = false
+        /* styles */
+        var __vue_styles__ = null
+        /* scopeId */
+        var __vue_scopeId__ = null
+        /* moduleIdentifier (server only) */
+        var __vue_module_identifier__ = null
+        var Component = normalizeComponent(
+            __vue_script__,
+            __vue_template__,
+            __vue_template_functional__,
+            __vue_styles__,
+            __vue_scopeId__,
+            __vue_module_identifier__
+        )
+        Component.options.__file = "resources/assets/js/components/comments/CommentShow.vue"
+        if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
+                return key !== "default" && key.substr(0, 2) !== "__"
+            })) {
+            console.error("named exports are not supported in *.vue files.")
+        }
+
+        /* hot reload */
+        if (false) {
+            (function () {
+                var hotAPI = require("vue-hot-reload-api")
+                hotAPI.install(require("vue"), false)
+                if (!hotAPI.compatible) return
+                module.hot.accept()
+                if (!module.hot.data) {
+                    hotAPI.createRecord("data-v-0783e058", Component.options)
+                } else {
+                    hotAPI.reload("data-v-0783e058", Component.options)
+                    ' + '
+                }
+                module.hot.dispose(function (data) {
+                    disposed = true
+                })
+            })()
+        }
+
+        module.exports = Component.exports
+
+
+        /***/
+    }),
+    /* 59 */
+    /***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        Object.defineProperty(__webpack_exports__, "__esModule", {value: true});
+//
+//
+//
+//
+//
+//
+
+
+// import { CommentReplyForm } from './CommentReplyForm';
+// import { CommentActionButtons } from './CommentActionButtons';
+        /* harmony default export */
+        __webpack_exports__["default"] = ({
+            name: 'comment-show'
+            // components:{
+            //     CommentReplyForm,
+            //     CommentActionButtons
+            // },
+            // data() {
+            //     return {
+            //         showCommentReplyForm:false,
+            //         replyTo:null
+            //     }
+            // },
+            // methods: {
+            //     CommentReplyActionButton(comment) {
+            //         console.log('CommentReplyActionButton', comment, typeof comment)
+            //         // this.showCommentReplyForm = true;
+            //         // this.replyTo = comment.id;
+            //     }
+            // }
+        });
+
+        /***/
+    }),
+    /* 60 */
+    /***/ (function (module, exports, __webpack_require__) {
+
+        var render = function () {
+            var _vm = this
+            var _h = _vm.$createElement
+            var _c = _vm._self._c || _h
+            return _c("div", [_vm._t("default")], 2)
+        }
+        var staticRenderFns = []
+        render._withStripped = true
+        module.exports = {render: render, staticRenderFns: staticRenderFns}
+        if (false) {
+            module.hot.accept()
+            if (module.hot.data) {
+                require("vue-hot-reload-api").rerender("data-v-0783e058", module.exports)
+            }
+        }
 
         /***/
     })
