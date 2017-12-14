@@ -4,7 +4,7 @@
             <button class="btn btn-sm btn-info" @click="$emit('onedit', commentParsed.id)">
                 Edit
             </button>
-            <button class="btn btn-sm btn-info" @click="$emit('onreply', commentParsed.id)">
+            <button class="btn btn-sm btn-info" @click="$emit('onreply', commentParsed)">
                 Reply
             </button>
         </span>

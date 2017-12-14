@@ -1,6 +1,6 @@
 {{--<div class="container">--}}
 {{--@if(count($comments)> 0 )--}}
-<comment-show>
+<comment-show inline-template>
     <div class="row comment">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
@@ -8,15 +8,8 @@
                     <div class="col-md-12 col-md-offset-3X">
 
                         <div class="row comment-header">
-                            <div class="col-md-12 col-md-offset-3X">
-                                {{--<span class="reply-comment-btn pull-right">--}}
-                                {{--<button class="btn btn-sm btn-info">--}}
-                                {{--Edit--}}
-                                {{--</button>--}}
-                                {{--<button class="btn btn-sm btn-info">--}}
-                                {{--Reply--}}
-                                {{--</button>--}}
-                                {{--</span>--}}
+                            <div class="col-md-12">
+                                {{--<example-component greetings="{{ $comment->id }}" @example="example"></example-component>--}}
                                 <comment-action-buttons @onreply="CommentReplyActionButton"
                                                         comment="{{ $comment }}"></comment-action-buttons>
                                 <span class="pull-left">
@@ -26,7 +19,7 @@
                         </div>
                         {{--<div>--}}
                         <div class="row comment-body">
-                            <div class="col-md-12 col-md-offset-3X">
+                            <div class="col-md-12">
                                 <p>{{ $comment->id }}: {{ $comment->body }}</p>
                                 <span class="pull-right comment-time">{{ $comment->updated_at->diffForHumans() }}</span>
                             </div>
@@ -40,12 +33,12 @@
                         @endif
                     </div>
                     <div v-if="showCommentReplyForm" class="col-md-12 comment-reply">
-                        {{--<div class="row ">--}}
-                        {{--<div class="col-md-12 col-md-offset-3X">--}}
-
-                        <comment-reply-form :reply-to="replyTo"></comment-reply-form>
-                        {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="row ">
+                            <div class="col-md-12 col-md-offset-3X">
+                                <comment-reply-form :reply-to="replyTo" @cancel="cancel"
+                                                    @save="save"></comment-reply-form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

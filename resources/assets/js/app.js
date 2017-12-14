@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -16,23 +15,26 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('comment-action-buttons', require('./components/comments/CommentActionButtons.vue'));
-Vue.component('comment-reply-form', require('./components/comments/CommentReplyForm.vue'));
+// Window.CommentActionButtons = Vue.component('comment-action-buttons', require('./components/comments/CommentActionButtons.vue'));
+// Window.CommentReplyForm = Vue.component('comment-reply-form', require('./components/comments/CommentReplyForm.vue'));
 Vue.component('comment-show', require('./components/comments/CommentShow.vue'));
 
 const app = new Vue({
     el: '#app',
-    data() {
-        return {
-            showCommentReplyForm: false,
-            replyTo: null
-        }
-    },
-    methods: {
-        CommentReplyActionButton(comment) {
-            console.log('CommentReplyActionButton', comment, typeof comment)
-            this.showCommentReplyForm = true;
-            this.replyTo = comment.id;
-        }
-    }
+    // data() {
+    //     return {
+    //         showCommentReplyForm: false,
+    //         replyTo: null
+    //     }
+    // },
+    // methods: {
+    //     CommentReplyActionButton(comment) {
+    //         console.log('CommentReplyActionButton', comment, typeof comment)
+    //         this.showCommentReplyForm = true;
+    //         this.replyTo = comment.id;
+    //     },
+    //     // clickedExampleFun() {
+    //     //     alert('clickedExampleFun()')
+    //     // }
+    // }
 });

@@ -5,8 +5,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Example Component</div>
 
-                    <div class="panel-body">
-                        I'm an example component! 3
+                    <div class="panel-body" @click="$emit('example')">
+                        I'm an example component! {{ greetings }}
                     </div>
                 </div>
             </div>
@@ -16,6 +16,7 @@
 
 <script>
     export default {
+        props: ['greetings'],
         mounted() {
             console.log('Component mounted.');
             // axios.get('api/posts/2').then(response => console.log(response.data));
